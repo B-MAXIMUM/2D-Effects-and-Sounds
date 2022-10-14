@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerControll : MonoBehaviour
 {
     public float jumpForce = 10;
-    public bool isOnGround = false;
+    private Animator _playerAnim;
+    public bool IsOnGround = false;
 
     private Rigidbody2D _playerRB;
 
@@ -13,15 +14,17 @@ public class PlayerControll : MonoBehaviour
     void Start()
     {
         _playerRB = GetComponent<Rigidbody2D>();
+        _playerAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && isOnGround)
+        if(Input.GetKeyDown(KeyCode.Space) && IsOnGround)
         {
             _playerRB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            isOnGround = false;
+            IsOnGround = false;
+            _playerAnim.SetBool("IsOnGround", false);
         }
     }
 
@@ -29,7 +32,8 @@ public class PlayerControll : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Ground"))
         {
-            isOnGround = true;
+            IsOnGround = true;
+            _playerAnim.SetBool("IsOnGround", true);
         }
     }
 }
