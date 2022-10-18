@@ -8,6 +8,8 @@ public class PlayerControll : MonoBehaviour
     private Animator _playerAnim;
     public bool IsOnGround = false;
 
+    public bool isGameOver = false;
+
     private Rigidbody2D _playerRB;
 
     // Start is called before the first frame update
@@ -20,7 +22,7 @@ public class PlayerControll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && IsOnGround)
+        if(Input.GetKeyDown(KeyCode.Space) && IsOnGround && !isGameOver)
         {
             _playerRB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             IsOnGround = false;
@@ -34,6 +36,11 @@ public class PlayerControll : MonoBehaviour
         {
             IsOnGround = true;
             _playerAnim.SetBool("IsOnGround", true);
+        }
+        else if(other.gameObject.CompareTag("Rock"))
+        {
+            isGameOver = true;
+            _playerAnim.SetTrigger("IsDead");
         }
     }
 }

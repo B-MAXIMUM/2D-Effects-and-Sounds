@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Rock
   layers:
   - Default
   - TransparentFX
@@ -41,4 +42,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: player
+    uniqueID: 1394848607
+    locked: 0
+  - name: graound
+    uniqueID: 4055944679
+    locked: 0
+  - name: rock
+    uniqueID: 851479869
     locked: 0
