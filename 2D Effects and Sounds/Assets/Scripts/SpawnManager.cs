@@ -13,7 +13,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {  
-        _playerScript = GameObject.Find("player").GetComponent<PlayerControll>();
+        _playerScript = GameObject.Find("Player").GetComponent<PlayerControll>();
         InvokeRepeating("Cum", _startDelay, _repeatRate);
     }
 
